@@ -1,0 +1,175 @@
+@use "./variables.scss";
+
+//global
+html {
+  font-family: "Space Grotesk", sans-serif;
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 20px;
+  }
+}
+
+//composition:
+.flow > * + * {
+  margin-top: var(--flow-space, 1em);
+}
+
+//utility
+
+//font-size
+.fs-14 {
+  font-size: 14px;
+}
+.fs-16 {
+  font-size: 16px;
+}
+.fs-20 {
+  font-size: 20px;
+}
+.fs-24 {
+  font-size: 24px;
+}
+.fs-30 {
+  font-size: 30px;
+}
+
+.color-accent-1 {
+  color: $color-accent-1;
+}
+.bg-color-accent-1 {
+  background-color: $color-accent-1;
+}
+.bg-color-black {
+  background-color: black;
+}
+
+.fw400 {
+  font-weight: 400;
+}
+.fw500 {
+  font-weight: 500;
+}
+.fw700 {
+  font-weight: 700;
+}
+
+.grid-auto-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.flex {
+  display: flex;
+  gap: var(--flex-space, 1rem);
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.container {
+  max-width: 1100px;
+  width: 85%;
+  margin: 0 auto;
+}
+
+// block
+
+.header {
+  padding: 0.5rem;
+  position: sticky;
+  top: -1px;
+  z-index: 1000;
+
+  //esto pasarlo al block del navitem
+  .navigation {
+    text-transform: uppercase;
+    li {
+      cursor: pointer;
+    }
+  }
+}
+
+.navigation {
+  @media (max-width: 950px) {
+    position: fixed;
+    inset: -16px 30% -1px -1px;
+    flex-direction: column;
+    padding-top: 4rem;
+    gap: 4rem;
+
+    align-items: center;
+    overflow: auto;
+
+    background: #fff;
+
+    transform: translateX(-100%);
+    transition: transform 350ms ease-out;
+    &[data-visible="true"] {
+      transform: translateX(0);
+    }
+  }
+}
+
+.hamburguer {
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  width: 2.5rem;
+  aspect-ratio: 1;
+  background-color: transparent;
+  border: none;
+  top: 4px;
+  // left: 0;
+  z-index: 9999;
+
+  span {
+    display: block;
+    position: relative;
+  }
+
+  span,
+  span::before,
+  span::after {
+    width: 1.7em;
+    height: 3px;
+    background-color: black;
+
+    transition: transform 350ms ease-in-out, opacity 200ms linear;
+  }
+  span {
+    transition: transform 350ms ease-in-out;
+  }
+
+  span::before,
+  span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  span::before {
+    bottom: 6px;
+  }
+  span::after {
+    top: 6px;
+  }
+  &[data-visible="true"] {
+    span {
+      transform: rotate(45deg);
+    }
+    span::after {
+      transform: rotate(90deg) translate(-6px);
+    }
+    span::before {
+      opacity: 0;
+    }
+  }
+  @media (max-width: 950px) {
+    display: block;
+  }
+}
