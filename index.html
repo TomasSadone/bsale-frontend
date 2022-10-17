@@ -16,7 +16,7 @@
   </head>
   <body class="[ flow ]">
     <header class="[ bg-color-accent-1 ][ header ]">
-      <div class="[ container flex space-between ]">
+      <div class="[ container flex space-between align-items-center ]">
         <button id="hamburguer-menu" class="hamburguer" data-visible="false">
           <span />
         </button>
@@ -30,27 +30,33 @@
             <!-- Meter las categorias -->
           </ul>
         </nav>
-        <input
-          placeholder="Search a product"
-          type="search"
-          name="product search"
-          id=""
-        />
+        <form id="form">
+          <input
+            autocomplete="off"
+            class="search-input"
+            placeholder="Search a product"
+            type="search"
+            name="product search"
+          />
+        </form>
       </div>
     </header>
     <section class="">
-      <div class="container">
-        <h1>Nombre de la categoria</h1>
-        <div class="grid-auto-columns">
-          <div class="card">
-            <!-- asi va a ser la estructura de las cards -->
-            <img src="" alt="" />
+      <div id="main" class="container">
+        <h1 class="uppercase" id="category-title"></h1>
+        <div id="cards-container" class="grid-auto-columns">
+          <!-- <div class="product-card">
+            asi va a ser la estructura de las cards
+            <img
+              src="https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen.jpg"
+              alt=""
+            />
             <h2>Titulo</h2>
-            <p>price</p>
-            <span
-              >si hay descuento que aparezca al lado del precio (20% OFF!)</span
-            >
-          </div>
+            <div>
+              <span>$200</span>
+              <span>20% OFF!!</span>
+            </div>
+          </div> -->
         </div>
       </div>
     </section>

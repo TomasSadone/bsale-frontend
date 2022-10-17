@@ -8,8 +8,7 @@ html {
     width: 6px;
   }
   ::-webkit-scrollbar-thumb {
-    background: #666;
-    border-radius: 20px;
+    background-color: #666;
   }
 }
 
@@ -59,7 +58,15 @@ html {
 
 .grid-auto-columns {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  //   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 }
 
 .flex {
@@ -71,10 +78,22 @@ html {
   justify-content: space-between;
 }
 
+.align-items-center {
+  align-items: center;
+}
+
 .container {
   max-width: 1100px;
   width: 85%;
   margin: 0 auto;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 // block
@@ -86,12 +105,12 @@ html {
   z-index: 1000;
 
   //esto pasarlo al block del navitem
-  .navigation {
-    text-transform: uppercase;
-    li {
-      cursor: pointer;
-    }
-  }
+  //   .navigation {
+  //     text-transform: uppercase;
+  //     li {
+  //       cursor: pointer;
+  //     }
+  //   }
 }
 
 .navigation {
@@ -172,4 +191,29 @@ html {
   @media (max-width: 950px) {
     display: block;
   }
+}
+
+.search-input {
+  border: 2px solid black;
+  background-color: $color-accent-1;
+  &::placeholder {
+    color: black;
+    font-weight: 700;
+  }
+  &:focus {
+    outline: 2px solid white;
+  }
+}
+
+.product-card {
+  img {
+    justify-self: center;
+  }
+  padding: 1rem;
+  border-radius: 5px;
+  display: grid;
+  gap: 0.5rem;
+  box-shadow: 1px 2px 9px 3px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 1px 2px 9px 3px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 1px 2px 9px 3px rgba(0, 0, 0, 0.15);
 }
