@@ -1,8 +1,8 @@
-@use "./variables.scss";
+@use './variables.scss';
 
 //global
 html {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
 
   ::-webkit-scrollbar {
     width: 6px;
@@ -116,7 +116,7 @@ html {
 .navigation {
   @media (max-width: 950px) {
     position: fixed;
-    inset: -16px 30% -1px -1px;
+    inset: -16px 30% -16px -1px;
     flex-direction: column;
     padding-top: 4rem;
     gap: 2rem;
@@ -128,7 +128,7 @@ html {
 
     transform: translateX(-100%);
     transition: transform 350ms ease-out;
-    &[data-visible="true"] {
+    &[data-visible='true'] {
       transform: translateX(0);
     }
   }
@@ -166,7 +166,7 @@ html {
 
   span::before,
   span::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
   }
@@ -177,7 +177,7 @@ html {
   span::after {
     top: 6px;
   }
-  &[data-visible="true"] {
+  &[data-visible='true'] {
     span {
       transform: rotate(45deg);
     }
