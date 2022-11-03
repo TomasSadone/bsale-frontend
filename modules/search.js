@@ -1,6 +1,7 @@
 import showProducts from './appendElements.js';
 import { form, searchInput, categoryTitle } from './htmlElements.js';
 
+/* -- EVENT LISTENER INSIDE FUNCTION SO IT CAN BE CALLED ON INDEX AN ADDED RIGHT AWAY -- */
 const searchModule = () => {
   form.addEventListener('submit', function (e) {
     e.preventDefault();

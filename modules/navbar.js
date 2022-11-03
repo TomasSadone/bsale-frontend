@@ -4,10 +4,12 @@ import { categoryTitle, hamburguerMenu, primaryNav } from './htmlElements.js';
 let categories;
 let selectedCategory;
 
+/* -- EVENT LISTENER AND DATA FETCH INSIDE FUNCTION -- */
+/* -- SO IT CAN BE CALLED ON INDEX AN ADDED RIGHT AWAY -- */
 const navbarModule = () => {
+  /* -- SO HAMBURGUER MENU WORKS -- */
   hamburguerMenu.addEventListener('click', () => {
     const hamburguerOpen = hamburguerMenu.getAttribute('data-visible');
-
     if (hamburguerOpen === 'false') {
       hamburguerMenu.setAttribute('data-visible', true);
       primaryNav.setAttribute('data-visible', true);
@@ -18,7 +20,8 @@ const navbarModule = () => {
   });
 
   /*  -- NAV ITEMS ONCLICK --  */
-
+  /*  -- DONE THIS WAY BEACAUSE THEY ARE ADDED TO THE DOM AFTER JS LOADS --  */
+  /*  -- SO IT WOULDN'T BE POSSIBLE TO BRING THEM WITH QUERYSELECTOR --  */
   document.addEventListener('click', function (e) {
     if (e.target && e.target.id == 'nav-item') {
       const thisCategory = categories.find(category => {
@@ -30,8 +33,7 @@ const navbarModule = () => {
     }
   });
 
-  /*  -- GET CATEGORIES --  */
-
+  /*  -- GET CATEGORIES RIGHT AWAY --  */
   (async () => {
     const url = 'https://bsale-api.onrender.com/categories';
     try {
@@ -39,11 +41,8 @@ const navbarModule = () => {
       const data = await resp.json();
       categories = data;
       selectedCategory = categories[0];
-      /*  -- ADD CATEGORIES TO NAVBAR --  */
       appendCategories(categories);
-      /*  -- GET PRODUCTS FROM INITIAL CATEGORY --  */
       getCategoryProducts(selectedCategory);
-      /*  -- SET INITIAL CATEGORY TITLE --  */
       categoryTitle.innerHTML = selectedCategory.name;
     } catch (err) {
       console.error(err);
@@ -62,8 +61,7 @@ const appendCategories = categories => {
   });
 };
 
-/*  -- GET PRODUCTS WITH CAT. ID --  */
-
+/*  -- GET AND DISPLAY PRODUCTS ON PASSED CATEGORY --  */
 const getCategoryProducts = async category => {
   const url = `https://bsale-api.onrender.com/category/${category.id}`;
   try {

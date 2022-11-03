@@ -1,5 +1,6 @@
 import { cardsContainer, main } from './htmlElements.js';
 
+/* -- REFRESHES EVERY PRODUCT SHOWN EACH TIME IT RECIEVES NEW DATA -- */
 const showProducts = products => {
   cleanCurrentElements();
 
@@ -9,6 +10,12 @@ const showProducts = products => {
   products.forEach(product => {
     appendProducts(product);
   });
+};
+
+const cleanCurrentElements = () => {
+  cardsContainer.innerHTML = '';
+  const noProductsTitle = document.getElementById('no-elements-message');
+  noProductsTitle && noProductsTitle.remove();
 };
 
 const appendProducts = product => {
@@ -58,12 +65,6 @@ const createPrice = (price, discount) => {
     priceContainer.append(nodeDiscount);
   }
   return priceContainer;
-};
-
-const cleanCurrentElements = () => {
-  cardsContainer.innerHTML = '';
-  const noProductsTitle = document.getElementById('no-elements-message');
-  noProductsTitle && noProductsTitle.remove();
 };
 
 const handleNoProductsFound = () => {
